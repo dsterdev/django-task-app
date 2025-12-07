@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <min class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <h1 class = "text-secondary text-center">Editar {{task.title}}</h1>
+                {{form.errors}}
+                <div class = "d-flex justify-content-center gap-3 mt-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <button type="submit" class="btn btn-primary px-4">Guardar Cambios</button>
+
+                        <button type="submit" class="btn btn-success px-4" formaction="{% url 'complete_tasks' task.id %}">Completar</button>
+                        <a href="{%url 'delete_tasks' task.id%}"  class="btn btn-danger px-4">Eliminar</a>                        
+                    </form>                    
+                </div>
+                <div class="d-flex justify-content-center gap-3 mt-4">
+                    
+                </div>
+            </div>
+        </div>
+    </min>
+{% endblock content %} 
